@@ -6,32 +6,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.sqc.zcfeng.angle.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class MainActivity extends AppCompatActivity {
 
-    @InjectView(R.id.gv)
+    @BindView(R.id.gv)
     GridView gv;
-
+    String title[]=new String[]{"健康中心","健康数据","电子医嘱","在线医师","天使守护","数据中心"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         gv.setAdapter(new BaseAdapter() {
             @Override
             public int getCount() {
-                return 0;
+                return 6;
             }
 
             @Override
@@ -46,7 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                return null;
+                LinearLayout ll= (LinearLayout) View.inflate(getApplicationContext(), R.layout.item, null);
+                ImageView iv = ll.findViewById(R.id.image);
+                TextView tv = ll.findViewById(R.id.text);
+                tv.setText(title[position]);
+                Picasso.with(getApplicationContext()).load(R.drawable._new).into(iv);
+                return ll;
             }
         });
     }

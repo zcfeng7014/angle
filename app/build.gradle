@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -26,5 +25,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':lib')
-    implementation 'com.jakewharton:butterknife:5.1.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.squareup.picasso:picasso:2.3.2'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
