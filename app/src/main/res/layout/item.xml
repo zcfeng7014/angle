@@ -6,9 +6,7 @@
     android:orientation="vertical"
     style="@style/direct"
     android:padding="5dp"
-    android:gravity="center"
-
-    >
+    android:gravity="center">
 
     <ImageView
 
