@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.Utils;
 import com.google.gson.Gson;
 import com.sqc.zcfeng.angle.R;
 import com.sqc.zcfeng.angle.constans.Constants;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             switch (which)
             {
                 case AlertDialog.BUTTON_POSITIVE:// "确认"按钮退出程序
+                    SPUtils.getInstance().remove(Constants.ISLOGGED);
                     finish();
                     break;
                 case AlertDialog.BUTTON_NEGATIVE:// "取消"第二个按钮取消对话框
