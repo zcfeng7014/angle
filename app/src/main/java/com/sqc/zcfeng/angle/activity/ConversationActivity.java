@@ -19,7 +19,10 @@ public class ConversationActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String title = getIntent().getData().getQueryParameter("title");
         if (!TextUtils.isEmpty(title)){
-            setTitle(title);
+            if(title.equals("zcfeng"))
+                setTitle("测试医生");
+            else
+                setTitle(title);
         }
     }
     @Override

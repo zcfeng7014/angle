@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText password;
     @OnClick(R.id.login)
     public void login(){
-        RongIM.connect("JdBjdAHi4ix5J7QXoNsaEsPxALb3YnK63jtE5MY3p8FULY37k46b/OCJorIiqo20GyZRe0XqdG5yWaamN9EX9A==", new RongIMClient.ConnectCallback() {
+        RongIM.connect("YX0kKciDH5DbnNw0UZKoZWLJx1VFiaB0oWFNLLOO3CL2xuLvIkU+r87bCPdSsD1eqjr+jwuvQ6JUIT8PCqpTyraglOX32tZc", new RongIMClient.ConnectCallback() {
             @Override
             public void onTokenIncorrect() {
             ToastUtils.showShort("onTokenIncorrect");
