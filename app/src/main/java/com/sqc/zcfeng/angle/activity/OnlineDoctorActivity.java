@@ -69,4 +69,10 @@ public class OnlineDoctorActivity extends AppCompatActivity {
         });
         tab.setupWithViewPager(vp);
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
+    }
 }

@@ -22,4 +22,9 @@ public class ConversationActivity extends AppCompatActivity {
             setTitle(title);
         }
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
+    }
 }
