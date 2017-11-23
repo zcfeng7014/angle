@@ -5,23 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.Utils;
-import com.google.gson.Gson;
 import com.sqc.zcfeng.angle.R;
 import com.sqc.zcfeng.angle.constans.Constants;
-import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             switch (which)
             {
                 case AlertDialog.BUTTON_POSITIVE:// "确认"按钮退出程序
-                    SPUtils.getInstance().remove(Constants.ISLOGGED);
                     finish();
                     break;
                 case AlertDialog.BUTTON_NEGATIVE:// "取消"第二个按钮取消对话框
@@ -51,12 +48,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(!SPUtils.getInstance().getBoolean(Constants.ISLOGGED)){
-            startActivity(new Intent(MainActivity.this,LoginActivity.class));
-            finish();
-        }
         ButterKnife.bind(this);
         gv.setAdapter(myadapter);
+        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position==3){
+                    startActivity(new Intent(getApplicationContext(),OnlineDoctorActivity.class));
+                }
+            }
+        });
+
     }
     class MyAdapter extends BaseAdapter{
 
@@ -85,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
             return ll;
         }
     }
-
     @Override
     public void onBackPressed() {
         AlertDialog isExit = new AlertDialog.Builder(this).create();
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         // 添加选择按钮并注册监听
         isExit.setButton(AlertDialog.BUTTON_POSITIVE,"确定", listener);
         isExit.setButton(AlertDialog.BUTTON_NEGATIVE,"取消", listener);
+
         // 显示对话框
         isExit.show();
     }

@@ -5,5 +5,5 @@ package com.sqc.zcfeng.angle.constans;
  */
 
 public interface Constants {
-    String ISLOGGED="islogged";
+    String TOKEN="token";
 }
