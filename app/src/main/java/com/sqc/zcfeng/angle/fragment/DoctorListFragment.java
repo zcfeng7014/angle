@@ -9,11 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshExpandableListView;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.sqc.zcfeng.angle.R;
 import com.sqc.zcfeng.angle.bean.DoctBean;
@@ -29,9 +33,9 @@ import io.rong.imkit.RongIM;
 public class DoctorListFragment extends Fragment {
 
     @BindView(R.id.lv)
-    PullToRefreshListView lv;
+    PullToRefreshExpandableListView lv;
     Unbinder unbinder;
-    ArrayList<DoctBean> list=new ArrayList<>();
+    ArrayList<ArrayList<DoctBean>> list=new ArrayList<>();
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -40,7 +44,8 @@ public class DoctorListFragment extends Fragment {
             lv.onRefreshComplete();
         }
     };
-    BaseAdapter mAdapter;;
+    String [] title={"急诊科","外科","内科","体检科"};
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,71 +63,22 @@ public class DoctorListFragment extends Fragment {
     }
 
     private void initView() {
+        for (String s:title
+                ) {
+            list.add(new ArrayList<DoctBean>());
+        }
         for (int i=0;i<20;i++)
         {
-            list.add(new DoctBean("医生","急诊科","主治医师","暂无"));
+            list.get(0).add(new DoctBean("医生","急诊科","主治医师","暂无"));
         }
 
-        mAdapter=new BaseAdapter(){
-
+        lv.getRefreshableView().setAdapter(mAdapter);
+        lv.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+        lv.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ExpandableListView>() {
             @Override
-            public int getCount() {
-                return list.size();
-            }
-
-            @Override
-            public Object getItem(int position) {
-                return null;
-            }
-
-            @Override
-            public long getItemId(int position) {
-                return 0;
-            }
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                ViewHolder viewHolder;
-                if(convertView==null){
-                    convertView=View.inflate(getContext(),R.layout.newitem,null);
-                    viewHolder=new ViewHolder(convertView);
-                }
-                else
-                    viewHolder= (ViewHolder) convertView.getTag();
-                DoctBean doctBean=list.get(position);
-               Picasso.with(getContext()).load(R.drawable.doctor).into( viewHolder.iv);
-                viewHolder.infoview.setText(doctBean.name+(position+1)+" "+doctBean.departments + "  "+doctBean.rank);
-                viewHolder.introview.setText("简介:"+doctBean.intro);
-                return convertView;
-            }
-            class ViewHolder{
-                ImageView iv;
-                TextView infoview;
-                TextView introview;
-                ViewHolder(View ll){
-                    iv=ll.findViewById(R.id.pic);
-                    infoview=ll.findViewById(R.id.name);
-                    introview=ll.findViewById(R.id.intro);
-                    ll.setTag(this);
-                }
-            }
-        };
-        lv.setAdapter(mAdapter);
-        lv.setMode(PullToRefreshBase.Mode.BOTH);
-        lv.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
-
-            @Override
-            public void onPullDownToRefresh(
-                    PullToRefreshBase<ListView> refreshView) {
+            public void onRefresh(PullToRefreshBase<ExpandableListView> refreshView) {
                 pullDownToRefresh();
             }
-
-            @Override
-            public void onPullUpToRefresh(
-                    PullToRefreshBase<ListView> refreshView) {
-                pullUpToRefresh();
-            }
-
         });
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -131,25 +87,6 @@ public class DoctorListFragment extends Fragment {
             }
         });
     }
-
-    private void pullUpToRefresh() {
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(1000);
-                    for (int i = 0; i < 20; i++) {
-                        list.add(new DoctBean("医生" ,"急诊科","主治医师","暂无"));
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                mHandler.sendEmptyMessage(0);
-            }
-        }).start();
-    }
-
     private void pullDownToRefresh() {
         new Thread(new Runnable() {
 
@@ -158,8 +95,12 @@ public class DoctorListFragment extends Fragment {
                 try {
                     Thread.sleep(1000);
                     list.clear();
+                    for (String s:title
+                         ) {
+                        list.add(new ArrayList<DoctBean>());
+                    }
                     for (int i = 0; i < 20; i++) {
-                        list.add(new DoctBean("医生","急诊科","主治医师","暂无"));
+                        list.get(0).add(new DoctBean("医生","急诊科","主治医师","暂无"));
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -174,6 +115,81 @@ public class DoctorListFragment extends Fragment {
         super.onDestroyView();
         unbinder.unbind();
     }
+    public BaseExpandableListAdapter mAdapter=new BaseExpandableListAdapter() {
+        @Override
+        public int getGroupCount() {
+            return title.length;
+        }
 
+        @Override
+        public int getChildrenCount(int groupPosition) {
+            return list.get(groupPosition).size();
+        }
+
+        @Override
+        public Object getGroup(int groupPosition) {
+            return null;
+        }
+
+        @Override
+        public Object getChild(int groupPosition, int childPosition) {
+            return null;
+        }
+
+        @Override
+        public long getGroupId(int groupPosition) {
+            return 0;
+        }
+
+        @Override
+        public long getChildId(int groupPosition, int childPosition) {
+            return 0;
+        }
+
+        @Override
+        public boolean hasStableIds() {
+            return false;
+        }
+
+        @Override
+        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+            LinearLayout ll= (LinearLayout) View.inflate(getContext(),R.layout.groupview_doctor_list_fragment,null);
+            TextView tv=ll.findViewById(R.id.text1);
+            tv.setText("   "+title[groupPosition]);
+            return ll;
+        }
+
+        @Override
+        public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+            ViewHolder viewHolder;
+            if(convertView==null){
+                convertView=View.inflate(getContext(),R.layout.newitem,null);
+                viewHolder=new ViewHolder(convertView);
+            }
+            else
+                viewHolder= (ViewHolder) convertView.getTag();
+            DoctBean doctBean=list.get(groupPosition).get(childPosition);
+            Picasso.with(getContext()).load(R.drawable.doctor).into( viewHolder.iv);
+            viewHolder.infoview.setText(doctBean.name+(childPosition+1)+" "+doctBean.departments + "  "+doctBean.rank);
+            viewHolder.introview.setText("简介:"+doctBean.intro);
+            return convertView;
+        }
+
+        @Override
+        public boolean isChildSelectable(int groupPosition, int childPosition) {
+            return false;
+        }
+        class ViewHolder{
+            ImageView iv;
+            TextView infoview;
+            TextView introview;
+            ViewHolder(View ll){
+                iv=ll.findViewById(R.id.pic);
+                infoview=ll.findViewById(R.id.name);
+                introview=ll.findViewById(R.id.intro);
+                ll.setTag(this);
+            }
+        }
+    };
 
 }

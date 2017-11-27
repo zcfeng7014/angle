@@ -5,7 +5,7 @@
     tools:context="com.sqc.zcfeng.angle.fragment.DoctorListFragment">
     <!-- TODO: Update blank fragment layout -->
 
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
+    <com.handmark.pulltorefresh.library.PullToRefreshExpandableListView
         android:id="@+id/lv"
         android:cacheColorHint="#000000"
         android:divider="#19000000"
@@ -13,6 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+    </com.handmark.pulltorefresh.library.PullToRefreshExpandableListView>
 
 </LinearLayout>

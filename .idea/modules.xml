@@ -3,22 +3,16 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/IMKit/IMKit.iml" filepath="$PROJECT_DIR$/IMKit/IMKit.iml" />
-      <module fileurl="file://D:\code\angle\angle\IMKit\IMKit.iml" filepath="D:\code\angle\angle\IMKit\IMKit.iml" />
       <module fileurl="file://D:\angle\IMKit\IMKit.iml" filepath="D:\angle\IMKit\IMKit.iml" />
       <module fileurl="file://$PROJECT_DIR$/IMLib/IMLib.iml" filepath="$PROJECT_DIR$/IMLib/IMLib.iml" />
-      <module fileurl="file://D:\code\angle\angle\IMLib\IMLib.iml" filepath="D:\code\angle\angle\IMLib\IMLib.iml" />
       <module fileurl="file://D:\angle\IMLib\IMLib.iml" filepath="D:\angle\IMLib\IMLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/angle.iml" filepath="$PROJECT_DIR$/angle.iml" />
       <module fileurl="file://D:\angle\angle.iml" filepath="D:\angle\angle.iml" />
-      <module fileurl="file://D:\code\angle\angle\angle.iml" filepath="D:\code\angle\angle\angle.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\code\angle\angle\app\app.iml" filepath="D:\code\angle\angle\app\app.iml" />
       <module fileurl="file://D:\angle\app\app.iml" filepath="D:\angle\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
-      <module fileurl="file://D:\code\angle\angle\lib\lib.iml" filepath="D:\code\angle\angle\lib\lib.iml" />
       <module fileurl="file://D:\angle\lib\lib.iml" filepath="D:\angle\lib\lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://D:\code\angle\angle\library\library.iml" filepath="D:\code\angle\angle\library\library.iml" />
       <module fileurl="file://D:\angle\library\library.iml" filepath="D:\angle\library\library.iml" />
     </modules>
   </component>

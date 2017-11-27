@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.gv)
     GridView gv;
-    String title[] = new String[]{"健康中心", "健康数据", "电子医嘱", "在线医师", "天使守护", "数据中心"};
+    String title[] = new String[]{"健康中心", "健康数据", "电子医嘱", "在线医师", "天使守护", "天使急救"};
     MyAdapter myadapter=new MyAdapter();
     /**监听对话框里面的button点击事件*/
     DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener()
