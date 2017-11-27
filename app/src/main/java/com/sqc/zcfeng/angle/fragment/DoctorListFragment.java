@@ -80,12 +80,21 @@ public class DoctorListFragment extends Fragment {
                 pullDownToRefresh();
             }
         });
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lv.getRefreshableView().setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 RongIM.getInstance().startPrivateChat(getContext(),"测试医生","测试医生");
+                return true;
             }
         });
+
+//
+//                .setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                RongIM.getInstance().startPrivateChat(getContext(),"测试医生","测试医生");
+//            }
+//        });
     }
     private void pullDownToRefresh() {
         new Thread(new Runnable() {
@@ -177,7 +186,7 @@ public class DoctorListFragment extends Fragment {
 
         @Override
         public boolean isChildSelectable(int groupPosition, int childPosition) {
-            return false;
+            return true;
         }
         class ViewHolder{
             ImageView iv;

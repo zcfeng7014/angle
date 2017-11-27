@@ -44,7 +44,7 @@ public class DoctorAdviceListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("医嘱列表");
+        setTitle("病例列表");
         for (int i=0;i<20;i++){
             list.add(" 测试医生"+(list.size()+1)+"  2017-1-1 14:30:00");
         }

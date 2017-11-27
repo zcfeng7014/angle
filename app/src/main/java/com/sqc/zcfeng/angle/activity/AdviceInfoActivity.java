@@ -13,6 +13,7 @@ import com.sqc.zcfeng.angle.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.rong.imkit.RongIM;
+import io.rong.imlib.model.Conversation;
 
 public class AdviceInfoActivity extends AppCompatActivity {
 
@@ -53,11 +54,13 @@ public class AdviceInfoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("医嘱详情");
+        setTitle("病例详情");
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RongIM.getInstance().startPrivateChat(getApplicationContext(),"测试医生","测试医生");
+                Bundle bundle=new Bundle();
+                bundle.putCharSequence("key","value");
+                RongIM.getInstance().startConversation(getApplicationContext(), Conversation.ConversationType.PRIVATE,"测试医生","测试医生",bundle);
             }
         });
     }
