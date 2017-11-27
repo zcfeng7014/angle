@@ -46,7 +46,7 @@ public class DoctorAdviceListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("病例列表");
         for (int i=0;i<20;i++){
-            list.add(" 测试医生"+(list.size()+1)+"  2017-1-1 14:30:00");
+            list.add(" 测试医院 体检科  2017-1-1 14:30:00");
         }
         mAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
         lv.setAdapter(mAdapter);
@@ -86,7 +86,7 @@ public class DoctorAdviceListActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    list.add(" 测试医生"+(list.size()+1)+"  2017-1-1 14:30:00");
+                    list.add(" 测试医院 体检科  2017-1-1 14:30:00");
                 }
                 mHandler.sendEmptyMessage(0);
             }
@@ -107,7 +107,7 @@ public class DoctorAdviceListActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    list.add(" 测试医生"+(list.size()+1)+"  2017-1-1 14:30:00");
+                    list.add(" 测试医院 体检科  2017-1-1 14:30:00");
                 }
                 mHandler.sendEmptyMessage(0);
             }

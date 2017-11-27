@@ -1,10 +1,12 @@
 package com.sqc.zcfeng.angle.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.sqc.zcfeng.angle.R;
 import com.sqc.zcfeng.lib.Utils.ToastUtils;
@@ -49,5 +51,17 @@ public class ConversationActivity extends AppCompatActivity {
            menu.findItem(R.id.a1).setVisible(true);
         }
         return super.onPrepareOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.a1:
+                startActivity(new Intent(this,AdviceInfoActivity.class));
+                break;
+            case R.id.a2:
+                startActivity(new Intent(this,DoctorAdviceListActivity.class));
+            default:;
+        }
+        return true;
     }
 }
