@@ -10,8 +10,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import com.sqc.zcfeng.angle.DoctorListFragment;
 import com.sqc.zcfeng.angle.R;
+import com.sqc.zcfeng.angle.fragment.DoctorListFragment;
 
 import java.util.ArrayList;
 

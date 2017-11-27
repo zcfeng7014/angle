@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\angle\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-it\\values-it.xml",
+            "outputFile": "D:\\code\\angle\\angle\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-it\\values-it.xml",
             "map": [
                 {
-                    "source": "D:\\angle\\library\\build\\intermediates\\bundles\\debug\\res\\values-it\\values-it.xml",
+                    "source": "D:\\code\\angle\\angle\\library\\build\\intermediates\\bundles\\debug\\res\\values-it\\values-it.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "D:\\angle\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-it\\values-it.xml",
+            "outputFile": "D:\\code\\angle\\angle\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-it\\values-it.xml",
             "map": [
                 {
-                    "source": "D:\\angle\\library\\build\\intermediates\\bundles\\debug\\res\\values-it\\values-it.xml",
+                    "source": "D:\\code\\angle\\angle\\library\\build\\intermediates\\bundles\\debug\\res\\values-it\\values-it.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",

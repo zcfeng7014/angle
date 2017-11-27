@@ -5,7 +5,7 @@ package com.sqc.zcfeng.angle.bean;
  */
 
 public class DoctBean {
-    String name;
+    public String name;
 
     public DoctBean(String name, String departments, String rank,String intro) {
         this.name = name;
@@ -14,7 +14,7 @@ public class DoctBean {
         this.intro = intro;
     }
 
-    String departments;
-    String rank;
-    String intro;
+    public String departments;
+    public String rank;
+    public String intro;
 }

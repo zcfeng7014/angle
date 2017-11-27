@@ -36,8 +36,8 @@
 
         <activity
             android:name=".activity.OnlineDoctorActivity"
-            android:theme="@style/AppNoActionTheme"
             android:screenOrientation="portrait"
+            android:theme="@style/AppNoActionTheme"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -50,11 +50,11 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ConversationActivity"
-            android:theme="@style/AppNoActionTheme"
+        <activity
+            android:name=".activity.ConversationActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppNoActionTheme"
             android:windowSoftInputMode="stateHidden|adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -65,7 +65,8 @@
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
-    </activity>
+        </activity>
+        <activity android:name=".activity.DoctorAdviceActivity"></activity>
     </application>
 
 </manifest>

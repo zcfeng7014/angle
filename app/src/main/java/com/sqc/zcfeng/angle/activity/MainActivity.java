@@ -53,9 +53,15 @@ public class MainActivity extends AppCompatActivity {
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position==3){
-                    startActivity(new Intent(getApplicationContext(),OnlineDoctorActivity.class));
+                switch (position){
+                    case 2:
+                        startActivity(new Intent(getApplicationContext(),DoctorAdviceActivity.class));
+                        break;
+                    case 3:
+                        startActivity(new Intent(getApplicationContext(),OnlineDoctorActivity.class));
+                        break;
                 }
+
             }
         });
 
