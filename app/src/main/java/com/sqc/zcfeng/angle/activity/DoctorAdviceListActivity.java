@@ -69,7 +69,7 @@ public class DoctorAdviceListActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //RongIM.getInstance().startPrivateChat(getApplicationContext(),"测试医生","测试医生");
+                //
                 startActivity(new Intent(DoctorAdviceListActivity.this,AdviceInfoActivity.class));
             }
         });

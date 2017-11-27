@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textStyle="bold"
+                android:id="@+id/hospital_id"
                 android:text="测试医院"
                 android:textSize="28sp"/>
             <LinearLayout
@@ -44,12 +45,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:textSize="18sp"
+                    android:id="@+id/name"
                     android:text="姓名：张三"
                     />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:id="@+id/sex"
                     android:text="性别：男"
                     />
                 <TextView
@@ -57,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="年龄：20岁"
+                    android:id="@+id/age"
                     />
             </LinearLayout>
             <View
@@ -73,11 +77,13 @@
                     android:layout_weight="3"
                     android:textSize="18sp"
                     android:text="科室：体检科"
+                    android:id="@+id/departments"
                     />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
+                    android:id="@+id/time"
                     android:text="时间：2017-01-12 12:34:56"
                     />
             </LinearLayout>
@@ -93,11 +99,13 @@
                     android:layout_weight="3"
                     android:textSize="18sp"
                     android:layout_height="wrap_content"
+                    android:id="@+id/doctor_name"
                     android:text="主治：测试医生"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="4"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rank"
                     android:text="职称：临时工医师"/>
             </LinearLayout>
             <View
@@ -108,7 +116,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="诊断结果："/>
+                android:text="诊断结果："
+                android:id="@+id/result"/>
             <TextView
                 android:layout_width="match_parent"
                 android:textSize="16sp"
@@ -122,6 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:id="@+id/advice"
                 android:text="医嘱："/>
             <TextView
                 android:layout_width="match_parent"
@@ -136,6 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:id="@+id/recipel"
                 android:text="电子处方："/>
             <TextView
                 android:layout_width="match_parent"
@@ -145,6 +156,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/btn"
                 android:text="继续沟通"/>
         </LinearLayout>
     </ScrollView>

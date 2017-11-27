@@ -155,7 +155,7 @@ public class DoctorListFragment extends Fragment {
         public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
             LinearLayout ll= (LinearLayout) View.inflate(getContext(),R.layout.groupview_doctor_list_fragment,null);
             TextView tv=ll.findViewById(R.id.text1);
-            tv.setText("   "+title[groupPosition]);
+            tv.setText("     "+title[groupPosition]);
             return ll;
         }
 
