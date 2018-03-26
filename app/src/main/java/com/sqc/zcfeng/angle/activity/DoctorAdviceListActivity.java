@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.rong.imkit.RongIM;
 
 public class DoctorAdviceListActivity extends AppCompatActivity {
     Handler mHandler = new Handler() {

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.gv)
     GridView gv;
-    String title[] = new String[]{"健康中心", "健康数据", "电子病例", "在线医师", "天使守护", "天使急救"};
+    String title[] = new String[]{"健康中心","健康资讯","电子病例", "就医向导",};
     MyAdapter myadapter=new MyAdapter();
     /**监听对话框里面的button点击事件*/
     DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener()
@@ -54,11 +54,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
+                    case 0:
+                        startActivity(new Intent(getApplicationContext(),HCActivity.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(getApplicationContext(),NewsActivity.class));
+                        break;
                     case 2:
                         startActivity(new Intent(getApplicationContext(),DoctorAdviceListActivity.class));
-                        break;
-                    case 3:
-                        startActivity(new Intent(getApplicationContext(),OnlineDoctorActivity.class));
                         break;
                 }
 

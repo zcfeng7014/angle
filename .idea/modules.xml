@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/IMKit/IMKit.iml" filepath="$PROJECT_DIR$/IMKit/IMKit.iml" />
       <module fileurl="file://D:\angle\IMKit\IMKit.iml" filepath="D:\angle\IMKit\IMKit.iml" />
-      <module fileurl="file://$PROJECT_DIR$/IMLib/IMLib.iml" filepath="$PROJECT_DIR$/IMLib/IMLib.iml" />
       <module fileurl="file://D:\angle\IMLib\IMLib.iml" filepath="D:\angle\IMLib\IMLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/angle.iml" filepath="$PROJECT_DIR$/angle.iml" />
       <module fileurl="file://D:\angle\angle.iml" filepath="D:\angle\angle.iml" />
