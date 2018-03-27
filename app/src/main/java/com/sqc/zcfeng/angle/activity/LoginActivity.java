@@ -6,10 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.ToastUtils;
+
 import com.sqc.zcfeng.angle.R;
-import com.sqc.zcfeng.angle.constans.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

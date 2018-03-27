@@ -13,12 +13,9 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.blankj.utilcode.util.SPUtils;
 import com.sqc.zcfeng.angle.R;
-import com.sqc.zcfeng.angle.constans.Constants;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
 
 
 public class MainActivity extends AppCompatActivity {
