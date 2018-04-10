@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.gv)
     GridView gv;
-    String title[] = new String[]{"健康中心","健康资讯","电子病例", "就医向导",};
+    String title[] = new String[]{"健康助手","健康日报","健康数据库", "这个医生有点冷",};
     MyAdapter myadapter=new MyAdapter();
     /**监听对话框里面的button点击事件*/
     DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener()
@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+    private int[] logo={R.drawable._new,R.drawable._new,R.drawable._new,R.drawable._new};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         startActivity(new Intent(getApplicationContext(),DoctorAdviceListActivity.class));
+                        break;
+                    case 3:
+                        startActivity(new Intent(getApplicationContext(),ClinicActivity.class));
                         break;
                 }
 
@@ -88,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout ll= (LinearLayout) View.inflate(MainActivity.this,R.layout.item,null);
             ImageView imageView=ll.findViewById(R.id.image);
             TextView textView=ll.findViewById(R.id.text);
-            imageView.setImageResource(R.drawable._new);
+            imageView.setImageResource(logo[position]);
             textView.setText(title[position]);
             return ll;
         }

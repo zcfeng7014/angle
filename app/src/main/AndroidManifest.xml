@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sqc.zcfeng.angle">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".activity.App"
         android:allowBackup="true"
@@ -32,8 +34,9 @@
         <activity android:name=".activity.ShowNewActivity" />
         <activity android:name=".activity.DoctorAdviceListActivity" />
         <activity android:name=".activity.AdviceInfoActivity" />
-        <activity android:name=".activity.IllListActivity"></activity>
-        <activity android:name=".activity.ShowIllActivity"></activity>
+        <activity android:name=".activity.IllListActivity" />
+        <activity android:name=".activity.ShowIllActivity" />
+        <activity android:name=".activity.ClinicActivity"></activity>
     </application>
 
 </manifest>
