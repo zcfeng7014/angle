@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.gv)
     GridView gv;
-    String title[] = new String[]{"健康助手","健康日报","健康数据库", "这个医生有点冷",};
+    String title[] = new String[]{"健康助手","健康日报","健康数据库", "自助问诊机",};
     MyAdapter myadapter=new MyAdapter();
     /**监听对话框里面的button点击事件*/
     DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener()
@@ -108,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
         // 添加选择按钮并注册监听
         isExit.setButton(AlertDialog.BUTTON_POSITIVE,"确定", listener);
         isExit.setButton(AlertDialog.BUTTON_NEGATIVE,"取消", listener);
-
         // 显示对话框
         isExit.show();
     }

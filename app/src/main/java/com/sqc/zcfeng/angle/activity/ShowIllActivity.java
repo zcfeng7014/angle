@@ -17,9 +17,10 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.google.gson.Gson;
 import com.sqc.zcfeng.angle.R;
 import com.sqc.zcfeng.angle.bean.illDetail;
+import com.sqc.zcfeng.angle.constans.Constants;
 import com.sqc.zcfeng.angle.constans.IllConfig;
 import com.sqc.zcfeng.angle.constans.NewsConfig;
-import com.sqc.zcfeng.lib.Utils.HttpUtils;
+import com.sqc.zcfeng.angle.request.HttpUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -136,7 +137,7 @@ public class ShowIllActivity extends AppCompatActivity {
     void Request(String url, final ObservableEmitter<illDetail> e) {
         App app = (App) getApplication();
         HashMap<String, String> head = new HashMap<>();
-        head.put("Authorization", "APPCODE " + NewsConfig.AppCode);
+        head.put("Authorization", "APPCODE " + Constants.AppCode);
         HttpUtils.doGetOnHead(app.client, url, head, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

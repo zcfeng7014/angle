@@ -20,8 +20,9 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.sqc.zcfeng.angle.R;
 import com.sqc.zcfeng.angle.bean.NewBean;
+import com.sqc.zcfeng.angle.constans.Constants;
 import com.sqc.zcfeng.angle.constans.NewsConfig;
-import com.sqc.zcfeng.lib.Utils.HttpUtils;
+import com.sqc.zcfeng.angle.request.HttpUtils;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -218,7 +219,7 @@ public class NewsActivity extends AppCompatActivity {
     void getdata(String url, final ObservableEmitter<NewBean> e) {
         App app = (App) getApplication();
         HashMap<String, String> head = new HashMap<>();
-        head.put("Authorization", "APPCODE " + NewsConfig.AppCode);
+        head.put("Authorization", "APPCODE " + Constants.AppCode);
         HttpUtils.doGetOnHead(app.client, url, head, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

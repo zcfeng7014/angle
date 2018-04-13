@@ -35,10 +35,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
               <com.anton46.stepsview.StepsView
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
@@ -50,50 +46,24 @@
                     android:layout_height="wrap_content"
                     android:text="\t\t开始智能导诊"
                     android:id="@+id/question"/>
-
-                <LinearLayout
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:minHeight="180dp">
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/step1"/>
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/step2"/>
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/step3"/>
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/step4"/>
+                    android:layout_height="180dp"
+                    >
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/step5"
-                        android:orientation="horizontal">
-
+                        android:orientation="vertical"
+                        android:id="@+id/layout"
+                        android:minHeight="180dp">
                     </LinearLayout>
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/step6"/>
-                    <TextView
-                        android:id="@+id/reslut"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
+                </ScrollView>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <Button
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
@@ -101,7 +71,7 @@
                     android:textSize="24dp"
                     android:textColor="@android:color/holo_blue_light"
                     android:id="@+id/pre"
-                    android:text="上一步"
+                    android:text="重新开始"
                     />
                 <View
                     android:layout_width="0dp"

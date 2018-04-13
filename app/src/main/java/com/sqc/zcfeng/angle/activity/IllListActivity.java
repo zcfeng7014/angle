@@ -21,8 +21,9 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.sqc.zcfeng.angle.R;
 import com.sqc.zcfeng.angle.bean.Illness;
+import com.sqc.zcfeng.angle.constans.Constants;
 import com.sqc.zcfeng.angle.constans.IllConfig;
-import com.sqc.zcfeng.lib.Utils.HttpUtils;
+import com.sqc.zcfeng.angle.request.HttpUtils;
 import com.sqc.zcfeng.lib.Utils.ThreadUtils;
 
 import org.json.JSONArray;
@@ -215,7 +216,7 @@ public class IllListActivity extends AppCompatActivity {
     void getdata(String url, final ObservableEmitter<Illness> e) {
         App app = (App) getApplication();
         HashMap<String, String> head = new HashMap<>();
-        head.put("Authorization", "APPCODE " + IllConfig.AppCode);
+        head.put("Authorization", "APPCODE " + Constants.AppCode);
         HttpUtils.doGetOnHead(app.client, url, head, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
