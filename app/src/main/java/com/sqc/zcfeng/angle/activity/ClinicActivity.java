@@ -76,7 +76,6 @@ public class ClinicActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinic);
         ButterKnife.bind(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -195,7 +194,7 @@ public class ClinicActivity extends AppCompatActivity  {
         HttpUtils.doPost(app.client, DoctorConfig.url, json_obj, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                LogUtils.d(e.getMessage());
             }
 
             @Override
@@ -254,7 +253,10 @@ public class ClinicActivity extends AppCompatActivity  {
 
                     }
                 }
-
+                else {
+                    LogUtils.d(response.code());
+                    LogUtils.d(response.message());
+                }
             }
         });
     }

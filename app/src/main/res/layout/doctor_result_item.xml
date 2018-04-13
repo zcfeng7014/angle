@@ -8,14 +8,16 @@
     >
 
     <android.support.v7.widget.CardView
-
         app:contentPadding="3dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="8dp"
-        android:layout_width="match_parent" android:layout_height="match_parent">
+        app:cardBackgroundColor="@color/rc_input_gap_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:orientation="vertical"
             >
             <TextView

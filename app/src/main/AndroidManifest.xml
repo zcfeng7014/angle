@@ -28,15 +28,15 @@
             android:name=".activity.LoginActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activity.HCActivity"
-            android:theme="@style/AppTheme" />
+            android:name=".activity.HCActivity" />
         <activity android:name=".activity.NewsActivity" />
         <activity android:name=".activity.ShowNewActivity" />
         <activity android:name=".activity.DoctorAdviceListActivity" />
         <activity android:name=".activity.AdviceInfoActivity" />
         <activity android:name=".activity.IllListActivity" />
         <activity android:name=".activity.ShowIllActivity" />
-        <activity android:name=".activity.ClinicActivity"></activity>
+        <activity android:name=".activity.ClinicActivity" />
+        <activity android:name=".activity.GrugActivity"></activity>
     </application>
 
 </manifest>
