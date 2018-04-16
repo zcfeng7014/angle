@@ -18,7 +18,7 @@ public class DrugResult {
 
     private int safeStatus;
     private boolean sync;
-    private List<?> interactionList;
+    private List<Interaction> interactionList;
     private List<TabooListBean> tabooList;
     private List<?> repetitionList;
 
@@ -38,11 +38,11 @@ public class DrugResult {
         this.sync = sync;
     }
 
-    public List<?> getInteractionList() {
+    public List<Interaction> getInteractionList() {
         return interactionList;
     }
 
-    public void setInteractionList(List<?> interactionList) {
+    public void setInteractionList(List<Interaction> interactionList) {
         this.interactionList = interactionList;
     }
 
@@ -172,5 +172,43 @@ public class DrugResult {
                 this.hasDetail = hasDetail;
             }
         }
+    }
+    public class Interaction{
+
+        /**
+         * drugList : [{"drugGuid":"8127","drugCommonId":8127,"drugCommonUuid":"1CD440A6C5","drugCommonName":"阿立哌唑片","indications":null,"hasDetail":true},{"drugGuid":"5714","drugCommonId":5714,"drugCommonUuid":"1CD946A5C6","drugCommonName":"盐酸氟西汀分散片","indications":null,"hasDetail":true}]
+         * grade : 2
+         * description : 盐酸氟西汀分散片可抑制阿立哌唑片代谢，使阿立哌唑片血浆药物浓度升高
+         */
+
+        private int grade;
+        private String description;
+        private List<TabooListBean.DrugBean> drugList;
+
+        public int getGrade() {
+            return grade;
+        }
+
+        public void setGrade(int grade) {
+            this.grade = grade;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public List<TabooListBean.DrugBean> getDrugList() {
+            return drugList;
+        }
+
+        public void setDrugList(List<TabooListBean.DrugBean> drugList) {
+            this.drugList = drugList;
+        }
+
+
     }
 }

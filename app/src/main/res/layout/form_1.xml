@@ -18,6 +18,7 @@
             android:layout_weight="4"
             android:id="@+id/names"
             android:layout_height="wrap_content"
+            android:text="利福平片|阿立哌唑片|盐酸氟西汀分散片"
             android:hint="药品名之间请用'|'分开"/>
     </LinearLayout>
     <LinearLayout
@@ -34,44 +35,7 @@
         android:layout_width="0dp"
         android:layout_weight="4"
         android:layout_height="wrap_content"
+        android:text="怀孕"
         android:hint="如：妊娠4个月"/>
 </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="患者性别:"/>
-        <Spinner
-            android:id="@+id/sex"
-            android:layout_width="0dp"
-            android:layout_weight="4"
-            android:layout_height="wrap_content"
-            android:entries="@array/sex"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="年龄"/>
-        <EditText
-            android:id="@+id/age"
-            android:layout_width="0dp"
-            android:layout_weight="3"
-            android:layout_height="wrap_content"/>
-        <Spinner
-            android:id="@+id/ageType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/age"
-            />
-    </LinearLayout>
 </LinearLayout>

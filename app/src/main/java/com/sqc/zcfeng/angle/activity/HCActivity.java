@@ -20,6 +20,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.gson.Gson;
 import com.sqc.zcfeng.angle.R;
+import com.sqc.zcfeng.angle.constans.DrugConfig;
 
 import java.util.HashMap;
 
@@ -86,25 +87,16 @@ public class HCActivity extends AppCompatActivity {
         LinearLayout linearLayout = (LinearLayout) View.inflate(this, R.layout.form_1, null);
         final EditText names = linearLayout.findViewById(R.id.names);
         final EditText symptom = linearLayout.findViewById(R.id.symptom);
-        final EditText age = linearLayout.findViewById(R.id.age);
-        final Spinner sex = linearLayout.findViewById(R.id.sex);
-        final Spinner ageType = linearLayout.findViewById(R.id.ageType);
         builder.setTitle("请输入药品通用名").setView(linearLayout).setPositiveButton("查询", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(HCActivity.this, IllListActivity.class);
+                Intent intent = new Intent(HCActivity.this, DrugActivity.class);
                 String[] _name = names.getText().toString().split("\\|");
                 String _symptom = symptom.getText().toString();
-                String _age = age.getText().toString();
-                int _gender = sex.getSelectedItemPosition();
-                String _ageType = ((TextView) ageType.getSelectedView()).getText().toString();
                 HashMap<String, Object> objectHashMap = new HashMap<>();
                 Gson gson = new Gson();
                 objectHashMap.put("drugCommonNames", _name);
-                objectHashMap.put("gender", _gender);
                 objectHashMap.put("symptom", _symptom);
-                objectHashMap.put("age", _age);
-                objectHashMap.put("ageType", _ageType);
                 String json = gson.toJson(objectHashMap).toString();
                 LogUtils.d(json);
                 intent.putExtra("json", json);
