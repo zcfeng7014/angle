@@ -43,6 +43,8 @@ public class DrugActivity extends AppCompatActivity {
     @BindView(R.id.safeStatus)
     TextView safeStatus;
     String[] grade = {"禁用", "不适用", "不推荐", "不宜应用", "忌用", "避免使用", "不建议", "慎用", "权衡利弊",};
+    String[] color={"#FF0000","#FFB5C5","#FFCC66","#CCFFFF","#CC0000","#00CCFF","#FFCCCC","#0099FF","#CFCFCF"};
+
     @BindView(R.id.tabooList)
     LinearLayout tabooList;
 
@@ -95,12 +97,12 @@ public class DrugActivity extends AppCompatActivity {
                 safeStatus.setTextColor(Color.RED);
                 break;
             case 2:
-                safeStatus.setText("待考量");
+                safeStatus.setText("慎用");
                 safeStatus.setTextColor(Color.parseColor("#FFA500"));
                 break;
             case 3:
                 safeStatus.setText("安全");
-                safeStatus.setTextColor(Color.parseColor("#66CD00   "));
+                safeStatus.setTextColor(Color.parseColor("#66CD00"));
         }
         List<DrugResult.Interaction> Interactionlist = result.getInteractionList();
         if (Interactionlist.size() > 0) {
@@ -118,6 +120,7 @@ public class DrugActivity extends AppCompatActivity {
             }
             TextView _grade = ll.findViewById(R.id.grade);
             _grade.setText(grade[interactionbeam.getGrade() - 1]);
+            _grade.setTextColor(Color.parseColor(color[interactionbeam.getGrade() - 1]));
             TextView _descript = ll.findViewById(R.id.description);
             _descript.setText("  " + interactionbeam.getDescription());
         }
@@ -131,6 +134,7 @@ public class DrugActivity extends AppCompatActivity {
             name.setText(bean.getDrug().getDrugCommonName());
             TextView _grade = ll.findViewById(R.id.grade);
             _grade.setText(grade[bean.getGrade() - 1]);
+            _grade.setTextColor(Color.parseColor(color[bean.getGrade() - 1]));
             TextView _descript = ll.findViewById(R.id.description);
             _descript.setText("  " + bean.getDescription());
             TextView crowd=ll.findViewById(R.id.crowd);
