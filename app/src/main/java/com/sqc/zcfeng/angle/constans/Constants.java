@@ -5,6 +5,5 @@ package com.sqc.zcfeng.angle.constans;
  */
 
 public interface Constants {
-    String TOKEN="token";
     String AppCode="e861d141f20849cab565a51358ca1f45";
 }

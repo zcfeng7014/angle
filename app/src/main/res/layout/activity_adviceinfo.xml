@@ -20,6 +20,7 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
     </android.support.design.widget.AppBarLayout>
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -28,85 +29,85 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+
+                    android:text="标题："
+                    />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:id="@+id/name"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="科室："
+
+                    />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:id="@+id/departments"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cardview_shadow_start_color"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="时间："
+                    />
+                <EditText
+                    android:id="@+id/time"
+                    android:inputType="date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cardview_shadow_start_color"/>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:id="@+id/hospital_id"
-                android:text="测试医院"
-                android:textSize="28sp"/>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textSize="18sp"
-                    android:id="@+id/name"
-                    android:text="姓名：张三"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:id="@+id/sex"
-                    android:text="性别：男"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="年龄：20岁"
-                    android:id="@+id/age"
-                    />
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/cardview_shadow_start_color"/>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textSize="18sp"
-                    android:text="科室：体检科"
-                    android:id="@+id/departments"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:id="@+id/time"
-                    android:text="时间：2017-01-12 12:34:56"
-                    />
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/cardview_shadow_start_color"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_width="wrap_content"
                     android:textSize="18sp"
                     android:layout_height="wrap_content"
+                    android:text="医 生:"/>
+                <EditText
                     android:id="@+id/doctor_name"
-                    android:text="主治：测试医生"/>
-                <TextView
+                    android:inputType="date"
                     android:layout_width="0dp"
-                    android:layout_weight="4"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rank"
-                    android:text="职称：临时工医师"/>
+
+                    android:text="联系方式："/>
+                <EditText
+                    android:id="@+id/tel"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -117,11 +118,13 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="诊断结果："
-                android:id="@+id/result"/>
-            <TextView
+               />
+            <EditText
+                android:inputType="textMultiLine"
+                android:lines="5"
                 android:layout_width="match_parent"
                 android:textSize="16sp"
-                android:text="*********************************************************************************************************************************"
+                android:id="@+id/result"
                 android:layout_height="wrap_content" />
             <View
                 android:layout_width="match_parent"
@@ -131,13 +134,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:id="@+id/advice"
+
                 android:text="医嘱："/>
-            <TextView
+
+            <EditText
                 android:layout_width="match_parent"
-                android:textSize="16sp"
-                android:text="***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/advice"
+                android:lines="5"
+                android:textSize="16sp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -146,18 +151,76 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:id="@+id/recipel"
+
                 android:text="电子处方："/>
-            <TextView
+            <EditText
                 android:layout_width="match_parent"
                 android:textSize="16sp"
-                android:text="*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************"
+                android:id="@+id/recipel"
+                android:lines="5"
                 android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:text="时间点列表："/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dp"
+                        android:textSize="18sp"
+                        android:id="@+id/addtime"
+                        android:textColor="@color/rc_voice_color_left"
+                        android:text="添加"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" >
+                    <ListView
+                        android:id="@+id/lv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></ListView>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="频率："/>
+                <Spinner
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rate"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="天"/>
+            </LinearLayout>
+            <Switch
+                android:text="是否定时提醒"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn"
-                android:text="继续沟通"/>
+                android:text="保存"/>
         </LinearLayout>
     </ScrollView>
 
