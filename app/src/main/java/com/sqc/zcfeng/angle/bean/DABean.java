@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class DABean implements Serializable{
     private static SQLiteDatabase dbr;
     private static SQLiteDatabase dbw;
-    public int id;
+    public String id;
     public String name;
     String _class;
     String time;
@@ -26,15 +26,15 @@ public class DABean implements Serializable{
     String orders;
     String prescription;
     int isalarm;
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public static ArrayList<DABean> getDb(Context context) {
+    public static ArrayList<DABean> getList(Context context) {
         if (dbr==null)
             dbr=new MyDB(context).getReadableDatabase();
         Cursor cursor=dbr.rawQuery("select * from casetable ",null);
@@ -42,7 +42,7 @@ public class DABean implements Serializable{
         while(cursor.moveToNext()){
 
             DABean bean=new DABean();
-            bean.setId(cursor.getInt(cursor.getColumnIndex("id")));
+            bean.setId(cursor.getString(cursor.getColumnIndex("id")));
             bean.setName(cursor.getString(cursor.getColumnIndex("name")));
             bean.set_class(cursor.getString(cursor.getColumnIndex("class")));
             bean.setTime(cursor.getString(cursor.getColumnIndex("time")));
@@ -57,7 +57,24 @@ public class DABean implements Serializable{
         }
         return list;
     }
-
+    public ArrayList<DABean> save(Context context){
+        if (dbw==null)
+            dbw=new MyDB(context).getWritableDatabase();
+        String sql="replace into casetable(id,name,class,time,doctorname,doctor_tel,orders,reslut,prescription,isalarm) values (?,?,?,?,?,?,?,?,?,?)";
+        dbw.execSQL(sql,new String[]{
+                getId(),
+                getName(),
+                get_class(),
+                getTime(),
+                getDoctorname(),
+                getDoctor_tel(),
+                getOrders(),
+                getReslut(),
+                getPrescription(),
+                getIsalarm()+""
+        });
+        return getList(context);
+    }
     public String getName() {
         return name;
     }

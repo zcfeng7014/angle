@@ -3,7 +3,8 @@
     package="com.sqc.zcfeng.angle">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <application
         android:name=".activity.App"
         android:allowBackup="true"
@@ -27,8 +28,7 @@
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".activity.HCActivity" />
+        <activity android:name=".activity.HCActivity" />
         <activity android:name=".activity.NewsActivity" />
         <activity android:name=".activity.ShowNewActivity" />
         <activity android:name=".activity.DoctorAdviceListActivity" />
@@ -36,7 +36,14 @@
         <activity android:name=".activity.IllListActivity" />
         <activity android:name=".activity.ShowIllActivity" />
         <activity android:name=".activity.ClinicActivity" />
-        <activity android:name=".activity.DrugActivity"></activity>
+        <activity android:name=".activity.DrugActivity" />
+
+        <receiver
+            android:name=".receiver.AlarmReceiver"
+            android:process=":remote"></receiver>
+
+        <activity android:name=".activity.AlarmActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light.Dialog.Alert"></activity>
     </application>
 
 </manifest>

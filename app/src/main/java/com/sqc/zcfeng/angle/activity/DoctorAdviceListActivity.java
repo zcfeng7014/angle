@@ -52,7 +52,6 @@ public class DoctorAdviceListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("病例列表");
        getdate();
         mAdapter=new MyAdapter();
         lv.setAdapter(mAdapter);
@@ -67,28 +66,19 @@ public class DoctorAdviceListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //
-//                startActivity(new Intent(DoctorAdviceListActivity.this,AdviceInfoActivity.class));
+                Intent intent=new Intent(DoctorAdviceListActivity.this,AdviceInfoActivity.class);
+                LogUtils.d(position);
+                intent.putExtra("bean",list.get(position-1));
+                startActivity(intent);
             }
         });
     }
 
     private void getdate() {
         list.clear();
-        list.addAll(DABean.getDb(this));
+        list.addAll(DABean.getList(this));
         LogUtils.d(list.size());
         mHandler.sendEmptyMessage(0);
-    }
-
-    private void pullUpToRefresh() {
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-               getdate();
-            }
-        }).start();
-
-
     }
 
     @Override
@@ -131,6 +121,8 @@ public class DoctorAdviceListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()== android.R.id.home)
+            finish();
         if(item.getTitle().equals("新增")){
             startActivity(new Intent(this,AdviceInfoActivity.class));
         }
@@ -141,5 +133,11 @@ public class DoctorAdviceListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add("新增");
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onResume() {
+        getdate();
+        super.onResume();
     }
 }

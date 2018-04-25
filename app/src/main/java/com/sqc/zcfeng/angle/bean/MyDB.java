@@ -14,7 +14,7 @@ public class MyDB extends SQLiteOpenHelper {
         super(context, "mydb.db", null, 1);
     }
     String casetable="create table if not exists casetable(" +
-            "id  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"+
+            "id  TEXT PRIMARY KEY NOT NULL,"+
             "name  TEXT,"+
             "class  TEXT,"+
             "time  TEXT,"+
@@ -24,12 +24,16 @@ public class MyDB extends SQLiteOpenHelper {
             "orders  TEXT,"+
             "prescription TEXT," +
             "isalarm int)";
+    String alarmlist="create table if not exists alarmlist(" +
+            "id  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"+
+            "case_id  TEXT," +
+            "hour INTEGER," +
+            "minute INTEGER)";
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
         sqLiteDatabase.execSQL(casetable);
-        sqLiteDatabase.execSQL("insert into casetable(`name`,`class`,`time`,`doctorname`,`doctor_tel`,`reslut`,`orders`,`prescription`,`isalarm`) values (1,1,1,1,1,1,1,1,1)");
-    }
+        sqLiteDatabase.execSQL(alarmlist);
+     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
