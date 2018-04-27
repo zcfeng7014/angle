@@ -1,6 +1,7 @@
 package com.sqc.zcfeng.angle.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.os.Bundle;
@@ -34,7 +35,8 @@ public class AlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
         ButterKnife.bind(this);
-        message.setText("ASDadasd");
+        Intent intent=getIntent();
+        message.setText(intent.getCharSequenceExtra("info"));
         mediaPlayer=MediaPlayer.create(this,RingtoneManager.getActualDefaultRingtoneUri(this,
                 RingtoneManager.TYPE_RINGTONE));
         mediaPlayer.setLooping(true);

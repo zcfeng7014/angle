@@ -31,7 +31,7 @@ public class HCActivity extends AppCompatActivity {
 
     @BindView(R.id.direct)
     ListView direct;
-    String[] directs = new String[]{"疾病查询", "饮食鉴定", "合理用药", "血压分析"};
+    String[] directs = new String[]{"疾病查询", "饮食鉴定", "合理用药"};
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.appbar)

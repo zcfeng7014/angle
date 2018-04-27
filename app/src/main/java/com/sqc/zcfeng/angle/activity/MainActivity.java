@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.gv)
     GridView gv;
-    String title[] = new String[]{"健康助手","健康日报","健康数据库", "自助问诊机",};
+    String title[] = new String[]{"健康助手","健康日报","健康数据库", "自助问诊机","合理饮食","合理用药"};
     MyAdapter myadapter=new MyAdapter();
     /**监听对话框里面的button点击事件*/
     DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener()
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-    private int[] logo={R.drawable._new,R.drawable._new,R.drawable._new,R.drawable._new};
+    private int[] logo={R.drawable._new,R.drawable._new,R.drawable._new,R.drawable._new,R.drawable._new,R.drawable._new};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 3:
                         startActivity(new Intent(getApplicationContext(),ClinicActivity.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(getApplicationContext(),DrugSearchActivity.class));
                         break;
                 }
 

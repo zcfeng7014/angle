@@ -20,6 +20,8 @@ public class AlarmReceiver extends BroadcastReceiver{
 
         String info=intent.getStringExtra("info");
         ToastUtils.showLong(info);
-        context.startActivity(new Intent(context, AlarmActivity.class));
+        Intent intent1=new Intent(context, AlarmActivity.class);
+        intent.putExtra("info",info);
+        context.startActivity(intent1);
     }
 }
