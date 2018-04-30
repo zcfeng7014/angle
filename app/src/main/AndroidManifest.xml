@@ -29,7 +29,6 @@
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activity.HCActivity" />
         <activity android:name=".activity.NewsActivity" />
         <activity android:name=".activity.ShowNewActivity" />
         <activity android:name=".activity.DoctorAdviceListActivity" />

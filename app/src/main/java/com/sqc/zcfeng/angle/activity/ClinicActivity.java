@@ -45,14 +45,14 @@ public class ClinicActivity extends AppCompatActivity  {
     @BindView(R.id.appbar)
     AppBarLayout appbar;
     String[] message = {
-            "开始智能导诊。",
+            "开始智能导诊。（本系统所有步骤都是不可逆，如需修改请重新开始）",
             "请进行步骤2：选择就诊人群",
             "请进行步骤3：选择身体部位",
             "请进行步骤4：选择该身体部位主要症状",
             "请进行步骤5：选择该主要症状的起病特征",
             "请进行步骤6：选择其他伴随症状(多选)",
-            "请进行步骤7：选择需要查询科室的疾病",
-            "经系统判定，得到以下诊断结果："
+            "经系统判定，得到以下诊断结果，选择相应诊断点击下一步查询对应的标准科室",
+            "科室列表："
     };
     String[] steplabel = {"", "", "", "", "", "", "", ""};
     @BindView(R.id.steps)

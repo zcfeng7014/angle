@@ -15,6 +15,8 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -71,50 +73,7 @@ public class IllListActivity extends AppCompatActivity {
         setTitle("健康资讯");
         final Intent intent=getIntent();
         key=intent.getStringExtra("key");
-        datalist.add(new Illness());
         pullToRefreshListView.setAdapter(ba);
-        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
-        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
-
-            @Override
-            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                //设置下拉时显示的日期和时间
-                String label = DateUtils.formatDateTime(getApplicationContext(), System.currentTimeMillis(),
-                        DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
-
-                // 更新显示的label
-                refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
-                // 开始执行异步任务，传入适配器来进行数据改变
-                Observable.create(new ObservableOnSubscribe<Illness>() {
-
-                    @Override
-                    public void subscribe(ObservableEmitter<Illness> o) throws Exception {
-                        update_data(o);
-                    }
-                }).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new Observer<Illness>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        datalist.clear();
-                    }
-
-                    @Override
-                    public void onNext(Illness value) {
-                        datalist.add(value);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        finish();
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        ba.notifyDataSetChanged();
-                        pullToRefreshListView.onRefreshComplete();
-                    }
-                });
-            }
-        });
         // 添加滑动到底部的监听器
         pullToRefreshListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
 
@@ -149,8 +108,7 @@ public class IllListActivity extends AppCompatActivity {
                 });
             }
         });
-        pullToRefreshListView.setRefreshing(true);
-        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
         pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -159,6 +117,38 @@ public class IllListActivity extends AppCompatActivity {
                     intent1.putExtra("title",illness.getName());
                     intent1.putExtra("id",illness.getId());
                     startActivity(intent1);
+            }
+        });
+        initdata();
+    }
+
+    private void initdata() {
+        Observable.create(new ObservableOnSubscribe<Illness>() {
+
+            @Override
+            public void subscribe(ObservableEmitter<Illness> o) throws Exception {
+                update_data(o);
+            }
+        }).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new Observer<Illness>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                datalist.clear();
+            }
+
+            @Override
+            public void onNext(Illness value) {
+                datalist.add(value);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                finish();
+            }
+
+            @Override
+            public void onComplete() {
+                ba.notifyDataSetChanged();
+                pullToRefreshListView.onRefreshComplete();
             }
         });
     }

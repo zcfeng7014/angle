@@ -6,5 +6,5 @@ package com.sqc.zcfeng.angle.constans;
 
 public interface DrugConfig {
     String url="http://hmsm.market.alicloudapi.com/hmsm/v_1_0/safe_medication";
-    String getNameUrl="http://192.168.1.133:90/api/api/getdate";
+    String getNameUrl="http://angle.sqc405.top/api/api/getdate";
 }

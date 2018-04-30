@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        startActivity(new Intent(getApplicationContext(),HCActivity.class));
+                        showAlertDialog0();
                         break;
                     case 1:
                         startActivity(new Intent(getApplicationContext(),NewsActivity.class));
@@ -65,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
                     case 3:
                         startActivity(new Intent(getApplicationContext(),ClinicActivity.class));
                         break;
+                    case 4:
+
+                        break;
                     case 5:
                         startActivity(new Intent(getApplicationContext(),DrugSearchActivity.class));
                         break;
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
     }
     class MyAdapter extends BaseAdapter{
@@ -100,6 +105,23 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(title[position]);
             return ll;
         }
+    }
+    void showAlertDialog0() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final EditText editText = new EditText(this);
+        builder.setTitle("请输入你要查询的疾病的名称").setView(editText).setPositiveButton("查询", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(MainActivity.this, IllListActivity.class);
+                intent.putExtra("key", editText.getText().toString());
+                startActivity(intent);
+            }
+        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        }).show();
     }
     @Override
     public void onBackPressed() {
