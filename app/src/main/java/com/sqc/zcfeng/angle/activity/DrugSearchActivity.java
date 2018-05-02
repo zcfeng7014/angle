@@ -51,14 +51,16 @@ public class DrugSearchActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         app= (App) getApplication();
+
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("合理用药");
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
         lv.setAdapter(arrayAdapter);
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(final AdapterView<?> adapterView, View view, final int i, long l) {
-                new AlertDialog.Builder(DrugSearchActivity.this).setMessage("确定添加"+list.get(i)+"到列表？").setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                new AlertDialog.Builder(DrugSearchActivity.this).setMessage("确定删除"+list.get(i)+"？").setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int index) {
                         list.remove(i);

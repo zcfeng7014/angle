@@ -5,15 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.sqc.zcfeng.angle.activity.MainActivity">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/top"
-        />
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
+    android:orientation="vertical"
     android:layout_weight="1">
     <GridView
         android:id="@+id/gv"
@@ -22,7 +17,20 @@
         android:background="@color/rc_divider_color"
         android:horizontalSpacing="0.8dp"
         android:verticalSpacing="0.8dp"
-        android:numColumns="2" />
+        android:numColumns="5" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/cardview_shadow_start_color"/>
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/lv"
+        android:cacheColorHint="#000000"
+        android:divider="#19000000"
+        android:dividerHeight="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 </LinearLayout>
 
 <TextView

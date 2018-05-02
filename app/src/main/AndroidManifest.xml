@@ -9,7 +9,7 @@
     <application
         android:name=".activity.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -46,7 +46,8 @@
             android:name=".activity.AlarmActivity"
             android:theme="@style/Base.Theme.AppCompat.Light.Dialog.Alert" />
         <activity android:name=".activity.DrugSearchActivity" />
-        <activity android:name=".activity.SelectDrugActivity"></activity>
+        <activity android:name=".activity.SelectDrugActivity" />
+        <activity android:name=".activity.DishCheckActivity"></activity>
     </application>
 
 </manifest>

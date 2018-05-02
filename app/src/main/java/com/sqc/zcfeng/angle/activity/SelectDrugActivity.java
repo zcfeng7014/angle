@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -70,17 +71,27 @@ public class SelectDrugActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_drug);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        setTitle("");
+        setTitle("天使守护");
         app = (App) getApplication();
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         lis.setAdapter(baseAdapter);
         lis.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                et.setText(list.get(i).getOffical_name());
+            public void onItemClick(AdapterView<?> adapterView, View view, final int index, long l) {
+                new AlertDialog.Builder(SelectDrugActivity.this).setMessage("确定添加"+list.get(index).getOffical_name()+"到列表？").setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent=getIntent();
+                        intent.putExtra("drugName",list.get(index).getOffical_name());
+                        SelectDrugActivity.this.setResult(RESULT_OK, intent);
+                        // 结束SelectCityActivity
+                        SelectDrugActivity.this.finish();
+                    }
+                }).setNegativeButton("取消", null).create().show();
             }
         });
+
     }
 
     @Override
@@ -100,16 +111,7 @@ public class SelectDrugActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(final String query) {
-                new AlertDialog.Builder(SelectDrugActivity.this).setMessage("确定添加"+query+"到列表？").setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent=getIntent();
-                            intent.putExtra("drugName",query);
-                        SelectDrugActivity.this.setResult(RESULT_OK, intent);
-                        // 结束SelectCityActivity
-                        SelectDrugActivity.this.finish();
-                    }
-                }).setNegativeButton("取消", null).create().show();
+
                 return false;
             }
 

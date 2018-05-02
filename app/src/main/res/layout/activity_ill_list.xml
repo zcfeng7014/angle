@@ -19,7 +19,7 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
     </android.support.design.widget.AppBarLayout>
     <com.handmark.pulltorefresh.library.PullToRefreshListView
-        android:id="@+id/lv"
+        android:id="@+id/ptrlist"
         android:cacheColorHint="#000000"
         android:divider="#19000000"
         android:dividerHeight="1dp"

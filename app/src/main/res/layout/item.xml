@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="0dp"
     android:layout_weight="1"
-    android:layout_height="100dp"
+    android:layout_height="50dp"
     android:orientation="vertical"
     style="@style/direct"
     android:padding="5dp"
@@ -12,8 +12,8 @@
 
         android:src="@mipmap/ic_launcher"
         android:id="@+id/image"
-        android:layout_width="60dp"
-        android:layout_height="75dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
 
         />
 

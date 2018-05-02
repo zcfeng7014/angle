@@ -56,7 +56,7 @@ public class IllListActivity extends AppCompatActivity {
     @BindView(R.id.appbar)
     AppBarLayout appbar;
     private ArrayList<Illness> datalist = new ArrayList<>();
-    @BindView(R.id.lv)
+    @BindView(R.id.ptrlist)
     PullToRefreshListView pullToRefreshListView;
     int page = 0;
     int allpage=0;
@@ -64,13 +64,13 @@ public class IllListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news);
+        setContentView(R.layout.activity_ill_list);
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("健康资讯");
+        setTitle("疾病查询");
         final Intent intent=getIntent();
         key=intent.getStringExtra("key");
         pullToRefreshListView.setAdapter(ba);

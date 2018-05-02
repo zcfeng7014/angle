@@ -57,7 +57,6 @@ public class DrugActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
-
         final String json = intent.getStringExtra("json");
         app = (App) getApplication();
         HttpUtils.doPost(app.client, DrugConfig.url, json, new Callback() {

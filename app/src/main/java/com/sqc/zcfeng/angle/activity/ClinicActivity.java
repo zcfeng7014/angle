@@ -79,7 +79,7 @@ public class ClinicActivity extends AppCompatActivity  {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("就医预检");
+        setTitle("智能预检");
         steps.setLabels(steplabel).setProgressColorIndicator(Color.BLUE).drawView();
         stepviews.add(new LinearLayout(this));
         setStep(0);
