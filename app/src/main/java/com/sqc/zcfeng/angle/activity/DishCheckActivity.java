@@ -117,11 +117,12 @@ public class DishCheckActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
+                list2.clear();
                 try {
                     JSONArray array=new JSONArray(json);
                     for (int i=0;i<array.length();i++){
                         JSONObject object=array.getJSONObject(i);
-                        list2.add(object.get("material_1")+"和"+object.get("material_1")+ "不建议一起食用 \n原因"+object.get("reason"));
+                        list2.add(object.get("material_1")+"和"+object.get("material_2")+ "不建议一起食用 \n原因"+object.get("reason"));
                     }
                     ThreadUtils.RunInUI(new Runnable() {
                         @Override

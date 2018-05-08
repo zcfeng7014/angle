@@ -111,7 +111,11 @@ public class SelectDrugActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(final String query) {
-
+                Intent intent=getIntent();
+                intent.putExtra("drugName",query);
+                SelectDrugActivity.this.setResult(RESULT_OK, intent);
+                // 结束SelectCityActivity
+                SelectDrugActivity.this.finish();
                 return false;
             }
 
