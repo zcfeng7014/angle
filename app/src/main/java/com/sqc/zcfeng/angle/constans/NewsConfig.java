@@ -6,6 +6,6 @@ package com.sqc.zcfeng.angle.constans;
 
 public interface NewsConfig {
     String getnew = "http://jisunews.market.alicloudapi.com/news/get";
-
+    String getnewbykey= "http://jisunews.market.alicloudapi.com/news/search";
 
 }

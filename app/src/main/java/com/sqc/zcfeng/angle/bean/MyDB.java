@@ -29,10 +29,16 @@ public class MyDB extends SQLiteOpenHelper {
             "case_id  TEXT," +
             "hour INTEGER," +
             "minute INTEGER)";
+    String action="create table if not exists action(" +
+            "id  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"+
+            "option  INTEGER," +
+            "key TEXT," +
+            "weight INTEGER)";
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(casetable);
         sqLiteDatabase.execSQL(alarmlist);
+        sqLiteDatabase.execSQL(action);
      }
 
     @Override

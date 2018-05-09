@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -17,11 +18,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.sqc.zcfeng.angle.R;
+import com.sqc.zcfeng.angle.bean.Action;
 import com.sqc.zcfeng.angle.bean.NewBean;
 import com.sqc.zcfeng.angle.constans.Constants;
 import com.sqc.zcfeng.angle.constans.NewsConfig;
@@ -36,7 +39,9 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -87,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         datalist.add(new NewBean());
         initgv();
+
         pullToRefreshListView.setAdapter(ba);
         pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
@@ -159,6 +165,12 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onComplete() {
+                        ArrayList<NewBean> list=new ArrayList<>();
+                        Random random=new Random();
+                        while (datalist.size()>0){
+                            list.remove(random.nextInt(datalist.size()));
+                        }
+                        list.addAll(datalist);
                         ba.notifyDataSetChanged();
                     }
                 });
@@ -318,14 +330,27 @@ public class MainActivity extends AppCompatActivity {
         } catch (UnsupportedEncodingException e1) {
             e1.printStackTrace();
         }
-
-
     }
-
+    int time;
     void getdata(String url, final ObservableEmitter<NewBean> e) {
+        ArrayList<String> list=Action.getKeys(this);
+        ArrayList<String> query_list=new ArrayList<>();
+        if(list.size()<=3)
+        {
+            query_list.addAll(list);
+        }
+        else
+        {
+            Random random=new Random();
+            for (int i=0;i<3;i++)
+                query_list.add(list.remove(random.nextInt(list.size())));
+        }
+
+        time=query_list.size()+1;
         App app = (App) getApplication();
         HashMap<String, String> head = new HashMap<>();
         head.put("Authorization", "APPCODE " + Constants.AppCode);
+
         HttpUtils.doGetOnHead(app.client, url, head, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -335,6 +360,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
+                LogUtils.d(json);
                 if (response.code() == 200) {
                     try {
                         JSONObject object = new JSONObject(json);
@@ -344,13 +370,10 @@ public class MainActivity extends AppCompatActivity {
                             NewBean bean = gson.fromJson(jsonArray.get(i).toString(), NewBean.class);
                             e.onNext(bean);
                         }
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
+                        time--;
+                        if(time==0){
+                            e.onComplete();
                         }
-                        e.onComplete();
-
                     } catch (JSONException e1) {
                         e1.printStackTrace();
                         ToastUtils.showLong("数据获取异常");
@@ -363,5 +386,57 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        for (String query : query_list) {
+            String queryurl = "";
+            try {
+                url = NewsConfig.getnewbykey + "?keyword="+ URLEncoder.encode("健康", "utf-8");
+            } catch (UnsupportedEncodingException e1) {
+                e1.printStackTrace();
+            }
+            HttpUtils.doGetOnHead(app.client, url, head, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String json = response.body().string();
+                    LogUtils.d(json);
+                    if (response.code() == 200) {
+                        ArrayList<NewBean> list1=new ArrayList<>();
+                        try {
+                            JSONObject object = new JSONObject(json);
+                            JSONArray jsonArray = object.getJSONObject("result").getJSONArray("list");
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                Gson gson = new Gson();
+                                NewBean bean = gson.fromJson(jsonArray.get(i).toString(), NewBean.class);
+                                list1.add(bean);
+                            }
+                            Random random=new Random();
+                            for(int i=0;i<5;i++){
+                                if(list1.size()>0)
+                                e.onNext(list1.remove(random.nextInt(list1.size())));
+
+                            }
+                            time--;
+                            LogUtils.d(time);
+                            if(time==0){
+                                e.onComplete();
+                            }
+                        } catch (JSONException e1) {
+                            e1.printStackTrace();
+                            ToastUtils.showLong("数据获取异常");
+                            finish();
+                        }
+                    } else {
+                        ToastUtils.showLong("数据获取失败");
+                        e.onComplete();
+                        finish();
+                    }
+                }
+            });
+        }
     }
 }

@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.sqc.zcfeng.angle.R;
+import com.sqc.zcfeng.angle.bean.Action;
 import com.sqc.zcfeng.angle.constans.DishConfig;
 import com.sqc.zcfeng.angle.request.HttpUtils;
 import com.sqc.zcfeng.lib.Utils.ThreadUtils;
@@ -61,6 +62,11 @@ public class DishCheckActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         setTitle("合理饮食");
+        Action action=new Action();
+        action.setOption(4);
+        action.setKey("饮食");
+        action.setWeight((float) 0.2);
+        action.add(this);
         app = (App) getApplication();
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
@@ -130,7 +136,6 @@ public class DishCheckActivity extends AppCompatActivity {
                             arrayAdapter2.notifyDataSetChanged();
                         }
                     });
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

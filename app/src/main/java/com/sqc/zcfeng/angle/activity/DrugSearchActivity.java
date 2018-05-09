@@ -19,6 +19,7 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.Gson;
 import com.sqc.zcfeng.angle.R;
+import com.sqc.zcfeng.angle.bean.Action;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +53,11 @@ public class DrugSearchActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         app= (App) getApplication();
 
+        Action action=new Action();
+        action.setOption(5);
+        action.setKey("药品");
+        action.setWeight((float) 0.2);
+        action.add(this);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("合理用药");
